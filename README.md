@@ -58,3 +58,34 @@ NOTE: o APP (aplicação) será o local no DJango que será implementado toda a 
 python -m manage startapp consultas
 ```
 
+clinica: pasta que contem os arquivos do projeto
+consultas: pasta que trata os arquivos da aplicação
+
+## Adicionando o APP ao Projeto
+
+É necessário entrar no arquivo settings.py e localizar a constante INSTALLED_APPS.
+A constante INSTALLED_APPS é uma lista que contém todos os APPs associados ao projeto, somente após um APP estar relacionado nesta lista que o DJango pode identificar e utilizar o APP nos demais fins.
+
+> IMPORTANTE:
+> Configurar o TIME_ZONE para que a aplicação seja executado com o horário local.
+> https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+> Configurar o linguagem da aplicação no LANGUAGE_CODE
+> http://www.i18nguy.com/unicode/language-identifiers.html
+
+```
+LANGUAGE_CODE = 'pt-br'
+TIME_ZONE = 'America/Sao_Paulo'
+
+```
+
+
+## Registrar o APP à aplicação admin
+
+A aplicação admin é uma interface gerada de maneira automática pelo DJango, que utilizo o modelo desenvolvido na aplicação, para criar uma interface básica de gestão, ou seja, uma tela de lista, detalhes, inclusão, atualização e exclusão.
+
+C -> Create (Criar)
+R -> Read (Ler)
+U -> Update (Atualizar)
+D -> Delete (Excluir)
+
+Para registra o aplicação é necessário localizar o arquivo consultas/admin.py e incluir os comandos de registro do modelo
