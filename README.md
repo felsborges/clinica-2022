@@ -89,3 +89,42 @@ U -> Update (Atualizar)
 D -> Delete (Excluir)
 
 Para registra o aplicação é necessário localizar o arquivo consultas/admin.py e incluir os comandos de registro do modelo
+
+### Cadastrar o super usuário (admin)
+
+Para acessar a tela de admin é necessário que se tenha um usuário devidamente registrado na aplicação.
+
+```
+python -m manage createsuperuser
+```
+
+- **createsuperuser**: é o comando utilizado para criar o usuário administrativo da aplicação.
+
+## Migration
+
+O migration (migrações) é o ato de capturar o modelo de dados desenvolvido em uma camada de aplicação, e preprar os códigos necessários para criar o banco de dados.
+
+> IMPORTANTE: o migrate não está vincula a nenhum banco de dados específico
+
+```
+python -m manage makemigrations consultas
+```
+
+- **makemigrations**: é o comando responsável pela preparação do modelo que será implantando no no banco de dados
+    - Como parâmetro é necessário informar o nome da aplicação
+
+Após a execução deste comando, a pasta migrations é criada dentro da aplicação (consultas/migrations).
+
+```
+python -m manage migrate consultas
+```
+
+- **migrate**: é comando responsável por aplicar a estrutura criada pelo makemigration.
+
+## URLconf
+
+A URLconf é termo utilizado para tratar os arquivos urls.py. Este arquivo está presente no projeto e na aplicação.
+
+O comando startapp não criar o arquivo urls.py na aplicação, é necessáiro criar o arquivo.
+
+> IMPORTANTE: o arquivo deve conter obrigatoriamente uma variável chamda urlpatterns

@@ -25,7 +25,10 @@ class Medico(models.Model):
         blank=True
     )
     # DateField: tipo do atributo que representa uma data
-    data_nascimento = models.DateField()
+    data_nascimento = models.DateField(
+        null=True,
+        blank=True
+    )
     cidade = models.CharField(
         max_length=255,
         null=True,
@@ -38,3 +41,7 @@ class Medico(models.Model):
         null=True,
         blank=True
     )
+
+    # Função padrão de classe para transformar uma classe em texto
+    def __str__(self):
+        return self.nome
