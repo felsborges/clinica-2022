@@ -31,7 +31,7 @@ pip install django
 ## Estrutuação do Projeto
 
 1. Criar o projeto
-NOTE: Projeto é o local que o motor do DJango é executado, com isso as configurações são feitas dentro dele, utilizando o arquivo settings.py
+> NOTE: Projeto é o local que o motor do DJango é executado, com isso as configurações são feitas dentro dele, utilizando o arquivo settings.py
 
 ```
 django-admin startproject clinica .
@@ -52,7 +52,7 @@ python -m manage runserver
 O site estará disponível no endereço http://127.0.0.1:8000/
 
 2. Criar um APP
-NOTE: o APP (aplicação) será o local no DJango que será implementado toda a lógica. Lembrando que um projeto pode ser vários APPs.
+> NOTE: o APP (aplicação) será o local no DJango que será implementado toda a lógica. Lembrando que um projeto pode ser vários APPs.
 
 ```
 python -m manage startapp consultas
