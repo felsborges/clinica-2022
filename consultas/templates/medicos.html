@@ -1,0 +1,12 @@
+<htm>
+<body>
+
+<ul>
+    {# A chave do dicionário (contexto) é utilizado como variável do motor #}
+    {% for medico in medicos %}
+    <li>{{ medico.nome }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</htm>
