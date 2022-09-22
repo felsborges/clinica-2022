@@ -7,6 +7,22 @@ from django.db import models
 
 # Documentação para selecionar os Fields
 #   https://docs.djangoproject.com/en/4.1/ref/models/fields/
+class Especialidade(models.Model):
+    # Foi definido que o código da especialidade poderá ser somente
+    #   números inteiros positivos, para isso foi utilizado o PositiveIntegerField
+    codigo = models.PositiveIntegerField()
+
+    nome = models.CharField(max_length=255)
+
+    descricao = models.CharField(
+        max_length=1000,
+        null=True,
+        blank=True
+    )
+
+    def __str__(self):
+        return self.nome
+
 class Medico(models.Model):
     # CharField: este tipo de atributo cria no banco de dados um campo de texto (VARCHAR)
     #   É obrigatório a parametrização do tamanho máximo, para isso utilizamos o max_length
@@ -38,6 +54,13 @@ class Medico(models.Model):
     #   Para o banco de dados é simplesmente um texto, e para a interface um componente
     #   com validação do e-mail
     email = models.EmailField(
+        null=True,
+        blank=True
+    )
+
+    especialidade = models.ForeignKey(
+        Especialidade,
+        on_delete=models.PROTECT,
         null=True,
         blank=True
     )
