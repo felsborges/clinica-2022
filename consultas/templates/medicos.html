@@ -1,12 +1,12 @@
-<htm>
+<html>
 <body>
 
 <ul>
     {# A chave do dicionário (contexto) é utilizado como variável do motor #}
     {% for medico in medicos %}
-    <li>{{ medico.nome }}</li>
+    <li><a href="{% url 'medico_detalhes' medico_id=medico.id %}">{{ medico.nome }}</a></li>
     {% endfor %}
 </ul>
 
 </body>
-</htm>
+</html>

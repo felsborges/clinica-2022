@@ -10,4 +10,9 @@ urlpatterns = [
     # A fução path é resposável por estruturar a rota da aplicação
     path('', views.medicos),
     path('medicos/', views.medicos),
+    # Para criar uma URL dinâmica é necessário colocar a parte dinâmica entre < e >, o valor
+    #   associado nesta parte da URL será passado por parâmero para a view
+    # O DJango fará a seguinte chamada de função para este exemplo
+    #   views.medico_detalhes(request=requerst, medico_id=medico_id)
+    path('<medico_id>/detalhes/', views.medico_detalhes, name='medico_detalhes'),
 ]

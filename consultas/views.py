@@ -6,6 +6,7 @@
 #   a importação do django.shortcuts.render
 # Este módulo é responsável por transforma o template em um html
 #   legivel para o navegador
+from django.http import HttpResponse
 from django.shortcuts import render
 
 from .models import Medico
@@ -29,3 +30,15 @@ def medicos(request):
     # No caso render, é necessário colocar como primeiro parâmetro
     #   o request, sem segundo o template e por último o contexto
     return render(request, 'medicos.html', contexto)
+
+# Função desenvolvida para fornecer os detalhes do médico, para isso foi necessário que fosse declarado
+#   o parâmetro medico_id para receber a informção vinda da URL
+def medico_detalhes(request, medico_id):
+    # Para todo os modelos é possível utilizar o método .get que tem a função de fazer uma consulta
+    #   no banco de dados e retornar somente um item
+    # pk -> é um parâmetro possível que faz referência a primary key (chave primária) definida no modelo
+    medico = Medico.objects.get(pk=medico_id)
+
+    contexto = { 'medico': medico }
+
+    return render(request, 'medico_detalhes.html', contexto)
