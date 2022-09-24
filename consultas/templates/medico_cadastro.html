@@ -1,0 +1,27 @@
+<html>
+<body>
+
+<h1>Medico Cadastro</h1>
+
+<!-- A tag form é reponsável por definir o início e das condições do formulário. -->
+<form method="post">
+    <!--
+        O comando csrf_token é responsável por aplicar uma camada de segurança aos formulários.
+        O nome desta técnica é Cross Site Request Forgery, que garante que somente as
+          requisições originadas pelo servidor sejam aceitas como um retorno de formulário.
+    -->
+    
+    {% csrf_token %}
+
+    <label for="nome">Nome:</label>
+    <input type="text" name="nome" id="nome">
+
+    <!-- 
+        A tag input com o atribudo type como submit executa o envido do formulário
+          para o servidor
+    -->
+    <input type="submit" value="Salvar">
+</form>
+
+</body>
+</html>

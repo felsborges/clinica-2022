@@ -6,7 +6,8 @@
 #   a importação do django.shortcuts.render
 # Este módulo é responsável por transforma o template em um html
 #   legivel para o navegador
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.urls import reverse
 from django.shortcuts import render
 
 from .models import Medico
@@ -42,3 +43,13 @@ def medico_detalhes(request, medico_id):
     contexto = { 'medico': medico }
 
     return render(request, 'medico_detalhes.html', contexto)
+
+def medico_cadastro(request):
+
+    if request.POST:
+        medico = Medico(nome=request.POST['nome'])
+        medico.save()
+
+        return HttpResponseRedirect(reverse('medicos'))
+
+    return render(request, 'medico_cadastro.html')
