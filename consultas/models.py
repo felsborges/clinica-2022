@@ -71,3 +71,24 @@ class Medico(models.Model):
     # Função padrão de classe para transformar uma classe em texto
     def __str__(self):
         return self.nome
+
+class Procedimento(models.Model):
+    nome = models.CharField(max_length = 255)
+
+    def __str__(self):
+        return self.nome
+
+class Consulta(models.Model):
+    data = models.DateField()
+    laudo = models.TextField(
+        null = True,
+        blank = True
+    )
+    medico = models.ForeignKey(
+        Medico,
+        on_delete = models.PROTECT
+    )
+    procedimentos = models.ManyToManyField(Procedimento)
+
+    def __str__(self):
+        return f'{self.data} - {self.medico.nome}'
